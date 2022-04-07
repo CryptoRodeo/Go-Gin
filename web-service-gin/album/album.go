@@ -57,3 +57,11 @@ func GetAlbumByID(c *gin.Context) {
 	}
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
 }
+
+// Another option besides the centralized routing package with route definitions
+//  is to have routing definitions in the packages that use them (like below).
+func CreateRoutes(r *gin.Engine) {
+	r.GET("/albums", GetAlbums)
+	r.GET("/albums/:id", GetAlbumByID)
+	r.POST("/albums", PostAlbums)
+}
