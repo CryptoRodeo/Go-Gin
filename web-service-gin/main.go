@@ -9,5 +9,7 @@ import (
 func main() {
 	router := gin.Default()
 	routing.CreateRoutes(router)
+	// another routing example
+	// album.CreateRoutes(router)
 	router.Run("localhost:8080")
 }
