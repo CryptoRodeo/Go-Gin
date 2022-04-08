@@ -11,7 +11,16 @@ func CreateRoutes(router *gin.Engine) {
 }
 
 func createAlbumRoutes(r *gin.Engine) {
-	r.GET("/albums", album.GetAlbums)
-	r.GET("/albums/:id", album.GetAlbumByID)
-	r.POST("/albums", album.PostAlbums)
+	// regular routing declarations
+	// r.GET("/albums", album.GetAlbums)
+	// r.GET("/albums/:id", album.GetAlbumByID)
+	// r.POST("/albums", album.PostAlbums)
+
+	// grouped routing declarations
+	albums := r.Group("/albums")
+	{
+		albums.GET("", album.GetAlbums)
+		albums.GET("/:id", album.GetAlbumByID)
+		albums.POST("", album.PostAlbums)
+	}
 }
